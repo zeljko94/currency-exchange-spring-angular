@@ -1,0 +1,26 @@
+image: maven:latest  # Use a Maven image as the base image
+
+stages:
+  - build
+  - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"  # Set Maven options to use local repository
+
+before_script:
+  - apt-get update && apt-get install -y openjdk-11-jdk  # Install JDK 11
+  - java -version  # Verify Java installation
+  - mvn --version  # Verify Maven installation
+
+build:
+  stage: build
+  script:
+    - mvn clean package -B  # Build the application
+  artifacts:
+    paths:
+      - target/*.jar  # Save the generated JAR file as an artifact
+
+test:
+  stage: test
+  script:
+    - mvn test  # Run unit tests

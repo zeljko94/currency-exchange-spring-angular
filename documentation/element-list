@@ -1,0 +1,15 @@
+hr.dice.assignments.currency_exchange
+hr.dice.assignments.currency_exchange.config
+hr.dice.assignments.currency_exchange.config.interfaces
+hr.dice.assignments.currency_exchange.controllers
+hr.dice.assignments.currency_exchange.controllers.interfaces
+hr.dice.assignments.currency_exchange.dto
+hr.dice.assignments.currency_exchange.exception
+hr.dice.assignments.currency_exchange.models
+hr.dice.assignments.currency_exchange.properties
+hr.dice.assignments.currency_exchange.repositories
+hr.dice.assignments.currency_exchange.scheduler
+hr.dice.assignments.currency_exchange.scheduler.interfaces
+hr.dice.assignments.currency_exchange.services
+hr.dice.assignments.currency_exchange.services.interfaces
+hr.dice.assignments.currency_exchange.util

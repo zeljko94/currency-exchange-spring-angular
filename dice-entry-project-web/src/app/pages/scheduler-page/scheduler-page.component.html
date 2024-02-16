@@ -1,0 +1,8 @@
+<p-toast key="fetchData"></p-toast>
+
+<app-loading-overlay [isLoading]="isLoading"></app-loading-overlay>
+<p-card header="Scheduler">
+
+    <button pButton type="button" label="Fetch currencies and exchange rates" (click)="fetchData()"></button>
+
+  </p-card>

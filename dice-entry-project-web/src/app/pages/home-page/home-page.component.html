@@ -1,0 +1,72 @@
+<p-toast key="form-input-error"></p-toast>
+
+<app-loading-overlay [isLoading]="isLoading"></app-loading-overlay>
+<p-card header="Currency exchange">
+
+    <div class="horizontal-container">
+      <div class="dropdown-container">
+        <label for="dropdown1">Amount:</label>
+
+        <p-inputNumber [(ngModel)]="amount" (keypress)="onFieldValueChange($event, 'amount')" mode="currency" [currency]="selectedFrom?.code || 'EUR'" locale="en-US"></p-inputNumber>
+
+      </div>
+  
+      <div class="dropdown-container">
+        <label for="dropdownFrom">From:</label>
+        <p-dropdown
+          [options]="currencies"
+          [(ngModel)]="selectedFrom"
+          optionLabel="label"
+          placeholder="Select Currency"
+          (onChange)="onFieldValueChange($event, 'from')"
+          id="dropdownFrom"
+        ></p-dropdown>
+      </div>
+  
+      <div class="dropdown-container">
+        <label for="dropdownTo">To:</label>
+        <p-dropdown
+          [options]="currencies"
+          [(ngModel)]="selectedTo"
+          optionLabel="label"
+          placeholder="Select Currency"
+          (onChange)="onFieldValueChange($event, 'to')"
+          id="dropdownTo"
+        ></p-dropdown>
+      </div>
+    </div>
+    <br>
+    <!-- <button pButton type="button" label="Convert" (click)="onSubmit()"></button> -->
+    <br>
+
+    <div class="exchange-details" *ngIf="convertData">
+        <p style="font-size: 16px;">{{ convertData.amount }} {{ convertData.base }} =</p>
+        <p style="font-size: 25px;font-weight: bold;">{{ convertData.converted }} {{ convertData.to }}</p>
+        <p style="font-size: 11px;">1 {{ convertData.base }} = {{  convertData.rate }} {{ convertData.to }}</p>
+        <p style="font-size: 11px;">1 {{ convertData.to }} = {{  1 / convertData.rate }} {{ convertData.base }}</p>
+    </div>
+
+    <!-- <div style="font-size: 12px;">Last updated: {{dateNow}}</div> -->
+  </p-card>
+
+  <br>
+  
+  <p-card header="Exchange rates ({{selectedFrom?.code}})" *ngIf="exchangeRates">
+
+    <p-table [value]="exchangeRates.rates | keyvalue">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Currency</th>
+            <th>Exchange Rate</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-entry>
+          <tr>
+            <td>{{ entry.key }}</td>
+            <td>{{ entry.value }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+  </p-card>
+  

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: dice-entry-project-web       # Path to the Dockerfile for building the Angular frontend
+    ports:
+      - "80:80"             # Map host port 80 to container port 80 for HTTP access
+    depends_on:
+      - backend             # Ensure backend service is started before frontend
+    networks:
+      - app-network         # Connect to the custom network
+
+  backend:
+    build: .      # Path to the Dockerfile for building the Spring Boot backend
+    ports:
+      - "8080:8080"         # Map host port 8080 to container port 8080 for HTTP access
+    depends_on:
+      - db                  # Ensure database service is started before backend
+    environment:
+      SPRING_PROFILES_ACTIVE: docker  # Activate Docker profile for backend
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/your_database_name
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: asdd12331.1
+    networks:
+      - app-network         # Connect to the custom network
+
+  db:
+    image: postgres:latest  # Use the official PostgreSQL image from Docker Hub
+    restart: always
+    environment:
+      POSTGRES_DB: currency_exchange_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: asdd12331.1
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  # Persist data outside the container
+    networks:
+      - app-network         # Connect to the custom network
+
+volumes:
+  postgres-data:           # Define a named volume for PostgreSQL data persistence
+
+networks:
+  app-network:             # Define a custom network for communication between services
+    driver: bridge
