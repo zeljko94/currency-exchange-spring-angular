@@ -1,7 +1,5 @@
-# Assignment 1 :: Currency Exchange App
+# Currency Exchange App
 
-
-# Assignment
 
 Create a backend application that will store Bank balance information where the base currency is EUR. 
 The Application should use this Free API https://anyapi.io/currency-exchange-api to get the current exchange 
@@ -64,14 +62,6 @@ the current balance.
   - you can use Mockito to mock the API client behaviour.
 - For using the DB in tests, use [TestContainers](https://www.testcontainers.org/)
 
-
-### GitLab
-
-Commit often and with meaningful commit messages. You can also break down this application into multiple tickets and 
-organize everything using the GitLab Board. Use the issue tracking with the commit message (branch too).
-
-- Create a Gitlab CI pipeline to test the application each time some new commits are pushed or merged to the `main` branch.
-
 ### BONUS POINTS:
 
 - Use [MapStruct](https://mapstruct.org/) to map Entity to DTO models.
@@ -91,10 +81,6 @@ organize everything using the GitLab Board. Use the issue tracking with the comm
 - Create and Update DB schemas with [Flyway](https://flywaydb.org/) Migration scripts.
 - Use [Flyway Test Extensions](https://github.com/flyway/flyway-test-extensions) to populate DB data when running tests
 
-## DEADLINE
-
-2 weeks
-
 ## USEFUL LINKS
 
 - [IOC & Dependency Injection](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
@@ -102,5 +88,3 @@ organize everything using the GitLab Board. Use the issue tracking with the comm
 - [Flyway](https://www.baeldung.com/database-migrations-with-flyway)
 - [Spring Boot Hibernate](https://www.baeldung.com/spring-boot-hibernate)
 - [Java Bean Validations](https://www.baeldung.com/javax-validation)
-
-If you have any questions, feel free to contact us anytime!
